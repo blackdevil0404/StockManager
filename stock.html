@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Management</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Stock Management</h1>
+    <form method="POST">
+        <input type="text" name="vendor_name" placeholder="Vendor Name" required>
+        <select name="stock_type">
+            <option value="Purchase">Purchase</option>
+            <option value="Sale">Sale</option>
+        </select>
+        <input type="number" name="quantity" placeholder="Quantity" required>
+        <input type="number" name="price" placeholder="Price" required>
+        <button type="submit">Submit</button>
+    </form>
+
+    <h2>Stock Records</h2>
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Vendor Name</th>
+            <th>Type</th>
+            <th>Quantity</th>
+            <th>Price</th>
+        </tr>
+        {% for stock in stocks %}
+        <tr>
+            <td>{{ stock[0] }}</td>
+            <td>{{ stock[1] }}</td>
+            <td>{{ stock[2] }}</td>
+            <td>{{ stock[3] }}</td>
+            <td>{{ stock[4] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
